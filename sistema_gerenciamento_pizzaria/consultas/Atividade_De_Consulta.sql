@@ -2,13 +2,13 @@
 * Equipe:  Ítalo Santos, Elison José, Matheus Douglas, Rafael Lucas e Allan Junior.
 * DATA: 22/09/2025
 */
-use sistema_pizzaria_normalizacao;
+use sistema_gerenciamento_pizzaria;
 
 -- Duas simples:
 
 SELECT * FROM clientes;
 
-SELECT Sabor, Preco_Base FROM pizzas_cardapio;
+SELECT nome, numero FROM pizzaria;
 
 -- Três com junções
 
@@ -99,7 +99,7 @@ SELECT Nome FROM pizzaria WHERE Nome NOT LIKE '%Express%';
 -- Between
 
 -- 1)
-SELECT Sabor, Preco_Base FROM pizzas_cardapio WHERE Preco_Base BETWEEN 38.00 AND 45.00;
+SELECT Cod_pedido, Valor_total FROM pedidos WHERE valor_total BETWEEN 38.00 AND 70.00;
 
 -- 2)
 SELECT Cod_Pedido, Cod_Cliente, Data_Hora FROM pedidos WHERE Cod_Pedido BETWEEN 2 AND 4;
@@ -118,11 +118,11 @@ SELECT LOWER(Borda) AS tipo_de_borda FROM pedido_pizzas;
 
 -- 1) 
 SELECT
-    MAX(Preco_Base) AS Pizza_Mais_Cara,
-    MIN(Preco_Base) AS Pizza_Mais_Barata,
-    AVG(Preco_Base) AS Media_de_Precos
+    MAX(Preco) AS Pizza_Mais_Cara,
+    MIN(Preco) AS Pizza_Mais_Barata,
+    AVG(Preco) AS Media_de_Precos
 FROM
-    pizzas_cardapio;
+    pizza_tamanho_preco;
     
 -- 2)
 SELECT
